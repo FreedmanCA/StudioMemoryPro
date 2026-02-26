@@ -307,6 +307,25 @@
                 margin-top: 0;
             }
         }
+	/* Specific Fixes ONLY for iPhone/Mobile */
+        @media (max-width: 767px) {
+            body {
+                overflow-x: hidden; /* Stops the horizontal 'wiggle' */
+                width: 100%;
+            }
+
+            /* Removes the 'ghost' space created by the side gradients */
+            .carousel-outer-wrapper::before,
+            .carousel-outer-wrapper::after {
+                display: none;
+            }
+
+            /* Makes carousel items fit the phone screen width */
+            .carousel-item {
+                width: 80vw; 
+                flex-shrink: 0;
+            }
+        }
 
     </style>
 </head>
@@ -404,7 +423,7 @@
         let animationID = 0;
 
         function moveCarousel(direction) {
-            const itemWidth = 373.33; 
+            const itemWidth = document.querySelector('.carousel-item').offsetWidth + 20; 
             const maxScroll = track.scrollWidth - track.parentElement.offsetWidth;
             
             if (direction === 'next') {
