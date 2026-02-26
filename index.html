@@ -30,7 +30,12 @@
             line-height: 1.47059;
             font-weight: 400;
             letter-spacing: -0.022em;
-            -webkit-font-smoothing: antialiased;
+	    -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Mobile Safari Guardrail - Protects macOS appearance */
+        main {
             overflow-x: hidden;
         }
 
@@ -191,24 +196,28 @@
         .carousel-outer-wrapper::after { right: -100px; }
 
         .carousel-window {
-            overflow: hidden;
+            overflow-x: auto;
             width: 100%;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+        }
+        .carousel-window::-webkit-scrollbar {
+            display: none;
         }
 
         .carousel-track {
             display: flex;
-            transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
             gap: 20px;
-            cursor: grab;
             width: max-content;
         }
-
-        .carousel-track:active { cursor: grabbing; }
 
         .carousel-item {
             width: 353.33px; 
             text-align: center;
             user-select: none;
+            scroll-snap-align: center;
         }
 
         .feature-ui-preview {
@@ -393,65 +402,23 @@
     </main>
 
     <script>
-        const track = document.getElementById('carouselTrack');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
+        const windowEl = document.querySelector('.carousel-window');
         
-        let isDragging = false;
-        let startX = 0;
-        let currentTranslate = 0;
-        let prevTranslate = 0;
-        let animationID = 0;
-
         function moveCarousel(direction) {
-            const itemWidth = 373.33; 
-            const maxScroll = track.scrollWidth - track.parentElement.offsetWidth;
+            // The item width (353.33) + gap (20)
+            const scrollAmount = 373.33; 
             
             if (direction === 'next') {
-                currentTranslate = Math.max(currentTranslate - itemWidth, -maxScroll);
+                windowEl.scrollBy({ left: scrollAmount, behavior: 'smooth' });
             } else {
-                currentTranslate = Math.min(currentTranslate + itemWidth, 0);
+                windowEl.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
             }
-            applyTransform();
-            prevTranslate = currentTranslate;
         }
 
         prevBtn.addEventListener('click', () => moveCarousel('prev'));
         nextBtn.addEventListener('click', () => moveCarousel('next'));
-
-        track.addEventListener('touchstart', dragStart);
-        track.addEventListener('touchend', dragEnd);
-        track.addEventListener('touchmove', dragMove);
-        track.addEventListener('mousedown', dragStart);
-        track.addEventListener('mouseup', dragEnd);
-        track.addEventListener('mousemove', dragMove);
-        track.addEventListener('mouseleave', dragEnd);
-
-        function dragStart(event) {
-            isDragging = true;
-            startX = getPositionX(event);
-            animationID = requestAnimationFrame(animation);
-            track.style.transition = 'none';
-        }
-        function dragMove(event) {
-            if (isDragging) {
-                const currentX = getPositionX(event);
-                currentTranslate = prevTranslate + currentX - startX;
-            }
-        }
-        function dragEnd() {
-            isDragging = false;
-            cancelAnimationFrame(animationID);
-            track.style.transition = 'transform 0.9s cubic-bezier(0.23, 1, 0.32, 1)';
-            const maxScroll = track.scrollWidth - track.parentElement.offsetWidth;
-            if (currentTranslate > 0) currentTranslate = 0;
-            if (currentTranslate < -maxScroll) currentTranslate = -maxScroll;
-            prevTranslate = currentTranslate;
-            applyTransform();
-        }
-        function getPositionX(event) { return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX; }
-        function animation() { applyTransform(); if (isDragging) requestAnimationFrame(animation); }
-        function applyTransform() { track.style.transform = `translateX(${currentTranslate}px)`; }
     </script>
 </body>
 </html>
