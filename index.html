@@ -222,6 +222,7 @@
             scroll-snap-align: center;
         }
 
+        /* Updated to allow clicking */
         .feature-ui-preview {
             width: 300px;
             height: 200px;
@@ -229,8 +230,13 @@
             object-fit: cover;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-            pointer-events: none;
+            cursor: pointer;
             display: block;
+            transition: transform 0.2s ease;
+        }
+
+        .feature-ui-preview:hover {
+            transform: scale(1.02);
         }
 
         .carousel-item h3 {
@@ -276,6 +282,33 @@
             opacity: 0;
             pointer-events: none; /* Prevents clicks while invisible */
             transform: translateY(-50%) scale(0.9); /* Adds a slight shrinking effect as it fades */
+        }
+
+        /* --- NATIVE DIALOG LIGHTBOX --- */
+        dialog.lightbox {
+            padding: 0;
+            border: none;
+            background: transparent;
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 16px;
+        }
+
+        dialog.lightbox::backdrop {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            cursor: zoom-out;
+        }
+
+        dialog.lightbox img {
+            max-width: 100%;
+            max-height: 90vh;
+            display: block;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            outline: none;
+            cursor: zoom-out;
         }
 
         /* Footer */
@@ -422,6 +455,10 @@
         </footer>
     </main>
 
+    <dialog class="lightbox" id="lightbox" aria-label="Enlarged Image View">
+        <img src="" alt="Enlarged UI Preview" id="lightbox-img">
+    </dialog>
+
     <script>
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
@@ -463,6 +500,32 @@
 
         prevBtn.addEventListener('click', () => moveCarousel('prev'));
         nextBtn.addEventListener('click', () => moveCarousel('next'));
+
+        // --- NATIVE DIALOG LIGHTBOX LOGIC ---
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const galleryImages = document.querySelectorAll('.feature-ui-preview');
+
+        // Open lightbox on image click
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.showModal();
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            });
+        });
+
+        // Close when clicking the backdrop or the image itself
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target === lightboxImg) {
+                lightbox.close();
+            }
+        });
+
+        // Restore scroll when closed (handles ESC key automatically)
+        lightbox.addEventListener('close', () => {
+            document.body.style.overflow = ''; 
+        });
     </script>
 </body>
 </html>
