@@ -11,6 +11,16 @@
     <meta name="keywords" content="StudioMemory Pro, artist archive, creator collection, maker projects, QuickDetails, art collection, creative portfolio, iCloud sync, iOS, macOS, archive works, artist database, maker database">
     <meta name="author" content="Bradley Freedman">
 
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="StudioMemory™ Pro — Your Creative Life, Remembered">
+    <meta property="og:description" content="A premium archive for creators and makers. Securely record, organize, and sync your creative collection across iPhone, iPad, and Mac.">
+    <meta property="og:image" content="hero.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="StudioMemory™ Pro — Your Creative Life, Remembered">
+    <meta name="twitter:description" content="A premium archive for creators and makers. Securely record, organize, and sync your creative collection across iPhone, iPad, and Mac.">
+    <meta name="twitter:image" content="hero.png">
+
     <style>
         :root {
             --apple-blue: #0071e3;
@@ -142,32 +152,24 @@
             gap: 12px;
             margin: 10px 0;    
         }
-        .btn-primary, .btn-secondary {
-            padding: 10px 18px;
-            border-radius: 980px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            display: inline-flex; /* Stable layout for internal text */
-            align-items: center;
-            justify-content: center;
-            white-space: nowrap;
-            /* Only animate transform to avoid triggering text layout shifts */
+        /* --- APP STORE BADGES --- */
+        .store-badge {
+            height: 44px; /* Locks height to match your previous text buttons */
+            width: auto;  /* Ensures the badge proportions don't stretch */
+            display: inline-block;
+            
+            /* Maintains your GPU-accelerated hover animations */
             transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            /* Force GPU rendering to lock the text in place */
             transform: translateZ(0); 
             will-change: transform;
-            -webkit-font-smoothing: antialiased;
-        }
-        .btn-primary { background-color: var(--apple-blue); color: white; border: 1px solid var(--apple-blue); }
-        .btn-secondary { border: 1px solid var(--text-main); color: var(--text-main); }
-
-	/* Hover Animations - Locked Text */
-        .btn-primary:hover, .btn-secondary:hover {
-            transform: scale(1.04) translateZ(0); /* Maintain GPU lock during scale */
         }
 
-        .btn-primary:active, .btn-secondary:active {
+        /* Hover Animations */
+        .store-badge:hover {
+            transform: scale(1.04) translateZ(0); 
+        }
+
+        .store-badge:active {
             transform: scale(0.98) translateZ(0);
         }
 
@@ -269,6 +271,13 @@
         .carousel-arrow.next { right: -60px; }
         .carousel-arrow svg { width: 22px; height: 22px; fill: var(--text-main); }
 
+        /* Hidden state for smart arrows */
+        .carousel-arrow.hidden {
+            opacity: 0;
+            pointer-events: none; /* Prevents clicks while invisible */
+            transform: translateY(-50%) scale(0.9); /* Adds a slight shrinking effect as it fades */
+        }
+
         /* Footer */
         footer {
             padding: 60px 10% 40px;
@@ -315,6 +324,14 @@
             .hero-image {
                 margin-top: 0;
             }
+
+            }
+
+        /* Hide carousel arrows on ALL touch-capable devices (iPhone, iPad portrait & landscape) */
+        @media (hover: none) and (pointer: coarse) {
+            .carousel-arrow {
+                display: none;
+            }
         }
 
     </style>
@@ -334,8 +351,12 @@
                 <h1><span class="brand-no-wrap">StudioMemory&trade; Pro&nbsp;&mdash;</span><br>your creative life, remembered.</h1>
                 <p>A simple, powerful archive for artists, creators and makers. Record every work with photos and the details you care about.</p>
                 <div class="cta-buttons">
-                    <a href="#" class="btn-primary">Download for iPhone & iPad</a>
-                    <a href="#" class="btn-secondary">Download for Mac</a>
+                    <a href="#" aria-label="Download on the App Store">
+                        <img src="app-store-badge.svg" alt="Download on the App Store" class="store-badge">
+                    </a>
+                    <a href="#" aria-label="Download on the Mac App Store">
+                        <img src="mac-app-store-badge.svg" alt="Download on the Mac App Store" class="store-badge">
+                    </a>
                 </div>
             </div>
             <div class="hero-image">
@@ -416,6 +437,29 @@
                 windowEl.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
             }
         }
+
+        // --- SMART ARROWS LOGIC ---
+        function updateArrowVisibility() {
+            // 1. Hide left arrow if at the very beginning
+            if (windowEl.scrollLeft <= 5) { // 5px buffer for safety
+                prevBtn.classList.add('hidden');
+            } else {
+                prevBtn.classList.remove('hidden');
+            }
+
+            // 2. Hide right arrow if at the very end
+            // Math.ceil prevents fractional pixel bugs on Mac Retina displays
+            if (Math.ceil(windowEl.scrollLeft + windowEl.clientWidth) >= windowEl.scrollWidth - 5) {
+                nextBtn.classList.add('hidden');
+            } else {
+                nextBtn.classList.remove('hidden');
+            }
+        }
+
+        // Listen for scrolling, resizing, and initial page load to update arrows
+        windowEl.addEventListener('scroll', updateArrowVisibility);
+        window.addEventListener('resize', updateArrowVisibility);
+        window.addEventListener('load', updateArrowVisibility);
 
         prevBtn.addEventListener('click', () => moveCarousel('prev'));
         nextBtn.addEventListener('click', () => moveCarousel('next'));
