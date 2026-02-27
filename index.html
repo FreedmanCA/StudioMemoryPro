@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-itunes-app" content="app-id=0000000000">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
     <title>StudioMemory™ Pro — Your Creative Life, Remembered</title>
-    <link rel="icon" type="image/png" href="logo.png">
-    <link rel="apple-touch-icon" href="logo.png">    
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">    
 
     <meta name="description" content="StudioMemory™ Pro is a premium archive for creators and makers. Securely record, organize, and sync your creative collection across iPhone, iPad, and Mac with QuickDetails™ and iCloud.">
     <meta name="keywords" content="StudioMemory Pro, artist archive, creator collection, maker projects, QuickDetails, art collection, creative portfolio, iCloud sync, iOS, macOS, archive works, artist database, maker database">
@@ -49,16 +55,31 @@
             overflow-x: hidden;
         }
 
-        /* Entrance Animation Definition */
+        /* --- Premium Entrance Animations --- */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px) scale(0.98);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
+        }
+
+        /* Snappy text entrance */
+        .hero-content { 
+            flex: 0 0 auto; 
+            width: 40%; 
+            animation: fadeInUp 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+        }
+
+        /* Staggered, weighted image entrance */
+        .hero-image { 
+            width: 55%; 
+            margin-top: -40px; 
+            animation: fadeInUp 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+            will-change: transform, opacity;
         }
 
         /* Navigation */
@@ -98,19 +119,14 @@
 
         /* Hero Section - Optimized 35/65 Split */
         .hero {
-            padding: 80px 10% 40px;
+            padding: 80px 0 40px; /* 0 horizontal padding to align strictly with carousel edges */
             display: flex;
             flex-direction: row;
             align-items: flex-start; 
-            justify-content: flex-start;
-            max-width: 2400px;
+            justify-content: space-between; /* Pushes image flush to the right edge */
+            max-width: 1100px; /* Matches carousel max-width perfectly */
             margin: 0 auto;
-            gap: 80px;
-        }
-        .hero-content { 
-            flex: 0 0 auto; 
-            width: 35%; /* Hero text area narrowed for impact */
-            animation: fadeInUp 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+            gap: 40px; /* Gives text and image healthy breathing room */
         }
 
         /* Heading Style - Fluid & No-Wrap */
@@ -121,6 +137,7 @@
             letter-spacing: -0.003em;
             margin-bottom: 20px;
             margin-top: 0;
+            text-wrap: balance;
         }
 
         /* Ensures brand name remains on one line */
@@ -135,12 +152,6 @@
             margin-bottom: 30px;
         }
 
-        /* Hero Image - Dominant 65% width with Entrance Animation */
-        .hero-image { 
-            width: 65%; 
-            margin-top: -40px; /* Aligns bottom with description text */
-            animation: fadeInUp 1.2s 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both; /* Staggered delay */
-        }
         .hero-image img { 
             width: 100%; 
             height: auto; 
@@ -152,6 +163,42 @@
             gap: 12px;
             margin: 10px 0;    
         }
+
+        .hero-content .hero-pricing-note {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 8px;
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        /* --- SECTION HEADLINE --- */
+        .section-header {
+            text-align: center;
+            padding: 60px 20px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-eyebrow {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .section-headline {
+            font-size: 26px; /* Approx 60% of Hero H1 */
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--text-main);
+            margin: 0;
+            text-wrap: balance;
+        }
+
         /* --- APP STORE BADGES --- */
         .store-badge {
             height: 44px; /* Locks height to match your previous text buttons */
@@ -179,7 +226,7 @@
             max-width: 1100px;
             margin: 0 auto;
             position: relative;
-            padding: 40px 0 80px;
+            padding: 40px 0 40px;
         }
 
         .carousel-outer-wrapper::before,
@@ -285,6 +332,16 @@
         }
 
         /* --- NATIVE DIALOG LIGHTBOX --- */
+        @keyframes lightboxPop {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes backdropFade {
+            0% { opacity: 0; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); }
+            100% { opacity: 1; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        }
+
         dialog.lightbox {
             padding: 0;
             border: none;
@@ -292,6 +349,12 @@
             max-width: 90vw;
             max-height: 90vh;
             border-radius: 16px;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        dialog.lightbox[open] {
+            animation: lightboxPop 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         dialog.lightbox::backdrop {
@@ -299,6 +362,11 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             cursor: zoom-out;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        dialog.lightbox[open]::backdrop {
+            animation: backdropFade 0.3s ease-out forwards;
         }
 
         dialog.lightbox img {
@@ -309,6 +377,7 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
             outline: none;
             cursor: zoom-out;
+            -webkit-tap-highlight-color: transparent;
         }
 
         /* Footer */
@@ -317,10 +386,20 @@
             text-align: center;
             background-color: #fafafa;
         }
-        .footer-cta h2 { font-size: 28px; margin-bottom: 8px; }
+        .footer-cta h2 { 
+            font-size: 28px; 
+            margin-bottom: 8px; 
+            text-wrap: balance;
+        }
         .pricing-tag { color: var(--text-secondary); font-size: 15px; margin-bottom: 24px; }
 
+        .footer-cta .cta-buttons {
+            justify-content: center;
+            margin-bottom: 0;
+        }
+
         .footer-nav {
+            margin-top: 40px;
             margin-top: 40px;
             display: flex;
             justify-content: center;
@@ -335,6 +414,73 @@
             transition: font-weight 0.1s ease;
         }
         .footer-nav a:hover { color: var(--apple-blue); font-weight: 600; }
+
+
+/* --- HORIZONTAL SPREAD FAQ STYLES --- */
+        .faq-container {
+            max-width: 1100px; /* Aligned exactly with the carousel wrapper */
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns evenly spaced on Mac displays */
+            gap: 20px;
+        }
+
+        .faq-card {
+            background-color: var(--bg-light);
+            border-radius: 18px;
+            border: 1px solid rgba(0, 0, 0, 0.04); /* The crisp, native edge */
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        
+        .faq-icon {
+            width: 28px;
+            height: 28px;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .faq-card h3 {
+            font-size: 17px; 
+            font-weight: 600;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+
+        .faq-card p {
+            font-size: 14px; 
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* iPad / Tablet layout: wraps to 2x2 */
+        @media (max-width: 1024px) {
+            .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .faq-container {
+                max-width: 780px;
+            }
+            .desktop-break {
+                display: none;
+            }
+        }
+
+        /* iPhone / Mobile layout: stacks to a single column */
+        @media (max-width: 768px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
         /* Multiplatform Responsive Tweaks */
         @media (max-width: 1024px) {
@@ -367,12 +513,67 @@
             }
         }
 
+        /* --- NATIVE DARK MODE SUPPORT --- */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --apple-blue: #2997ff;
+                --text-main: #f5f5f7;
+                --text-secondary: #86868b;
+                --bg-light: #1c1c1e;
+                --border-color: #38383a;
+            }
+
+            body {
+                background-color: #000000;
+            }
+
+            nav {
+                background: rgba(0, 0, 0, 0.8);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .carousel-outer-wrapper::before,
+            .carousel-outer-wrapper::after {
+                background: #000000;
+            }
+
+            .carousel-arrow {
+                background: rgba(28, 28, 30, 0.85);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .carousel-arrow:hover {
+                background: #2c2c2e;
+            }
+
+            dialog.lightbox::backdrop {
+                background: rgba(0, 0, 0, 0.75);
+            }
+
+            footer {
+                background-color: #000000;
+            }
+
+            .footer-nav {
+                border-top: 1px solid #38383a;
+            }
+
+            .faq-card {
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            /* Adjusts the inside of the FAQ icons so they aren't bright white */
+            .faq-icon rect[fill="white"] {
+                fill: var(--bg-light);
+            }
+        }
+
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo-container">
+        <a href="#" class="logo-container">
             <img src="logo.png" alt="StudioMemory Pro Logo" class="logo-img">
             StudioMemory&trade; Pro
         </a>
@@ -391,11 +592,17 @@
                         <img src="mac-app-store-badge.svg" alt="Download on the Mac App Store" class="store-badge">
                     </a>
                 </div>
+                <p class="hero-pricing-note">Free up to 15 works &bull; No account required</p>
             </div>
             <div class="hero-image">
                 <img src="hero.png" alt="Mockup of StudioMemory Pro showing iPhone, iPad, and Mac screens">
             </div>
         </section>
+
+        <div class="section-header">
+            <span class="section-eyebrow">For Creators and Makers</span>
+            <h2 class="section-headline">Ditch the spreadsheets and scattered photo albums. Bring your entire studio into one beautiful, searchable archive.</h2>
+        </div>
 
         <div class="carousel-outer-wrapper">
             <div class="carousel-window">
@@ -436,15 +643,73 @@
             <button class="carousel-arrow prev" id="prevBtn" aria-label="Previous">
                 <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
             </button>
-            <button class="carousel-arrow next" id="nextBtn" aria-label="Next">
+           <button class="carousel-arrow next" id="nextBtn" aria-label="Next">
                 <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
             </button>
         </div>
+
+        <div class="section-header">
+            <span class="section-eyebrow">Secure & Portable</span>
+            <h2 class="section-headline">Safe, secure, and perfectly synced across every device you own.</h2>
+        </div>
+
+		<div class="faq-container">
+            <div class="faq-grid">
+                
+		<div class="faq-card">
+                    <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V5z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 20h8M10 17v3" />
+                        <rect x="13" y="8" width="7" height="10" rx="1" stroke="currentColor" fill="white" />
+                        <rect x="18" y="12" width="4" height="7" rx="0.5" stroke="currentColor" fill="white" />
+                    </svg>
+                    <h3>One Subscription<br class="desktop-break"> — All Devices</h3>
+                    <p>Unlock StudioMemory&trade; Pro across your iPhone, iPad, and Mac with a single annual subscription. Access and manage your collection wherever you go.</p>
+                </div>
+
+                
+
+		<div class="faq-card">
+                    <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                    </svg>
+                    <h3>Private & Secure</h3>
+                    <p>Your collection is stored locally on your Apple devices. If you choose to sync across devices, your collection will be stored in Apple’s iCloud service. StudioMemory Pro collects no personal data, runs no ads, and requires no account.</p>
+                </div>
+
+                <div class="faq-card">
+                    <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3" />
+                    </svg>
+                    <h3>Your Data, Always</h3>
+                    <p>You always own your data, and your collection is never trapped. StudioMemory Pro includes easy-to-use tools to export a full ZIP archive of your entire collection in industry-standard formats at any time.</p>
+                </div>
+                
+                <div class="faq-card">
+                    <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h3>Archive Access</h3>
+                    <p>If you ever decide to cancel your paid license, you can keep using StudioMemory Pro to view, manage, and export your existing works.</p>
+                </div>
+
+            </div>
+        </div>
+
+
 
         <footer>
             <div class="footer-cta">
                 <h2>Try it free. Upgrade anytime.</h2>
                 <p class="pricing-tag">Free up to 15 works • Upgrade to 10,000 works</p>
+                <div class="cta-buttons">
+                    <a href="#" aria-label="Download on the App Store">
+                        <img src="app-store-badge.svg" alt="Download on the App Store" class="store-badge">
+                    </a>
+                    <a href="#" aria-label="Download on the Mac App Store">
+                        <img src="mac-app-store-badge.svg" alt="Download on the Mac App Store" class="store-badge">
+                    </a>
+                </div>
             </div>
             <div class="footer-nav">
                 <a href="about.html">About</a>
