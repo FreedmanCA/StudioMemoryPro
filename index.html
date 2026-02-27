@@ -597,6 +597,31 @@
             }
         }
 
+
+	/* --- PAPER TEXTURE EFFECT (REFINED/LIGHTER) --- */
+        .paper-texture-wrapper {
+            position: relative;
+            display: inline-block;
+            margin: 0 auto;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        /* Adjusted for a lighter, premium vellum feel */
+        .paper-texture-wrapper::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.02; /* Reduced from 0.04 to 0.02 for a lighter touch */
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+            mix-blend-mode: soft-light; /* Changed from 'multiply' to 'soft-light' for a cleaner look */
+        }
+
+
     </style>
 </head>
 <body>
@@ -647,7 +672,9 @@
                         <p>Sync securely across devices with Apple's iCloud service and manually export full ZIP archives for extra security.</p>
                     </div>
                     <div class="carousel-item">
-                        <img src="PDFs.webp" width="2400" height="1600" loading="lazy" class="feature-ui-preview" alt="PDF Portfolio Generation">
+                        <div class="paper-texture-wrapper">
+                            <img src="PDFs.webp" width="2400" height="1600" loading="lazy" class="feature-ui-preview" alt="PDF Portfolio Generation">
+                        </div>
                         <h3>PDF Portfolios</h3>
                         <p>Easily generate and share high-quality PDF portfolios of your works, with full details and photos.</p>
                     </div>
