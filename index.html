@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="apple-itunes-app" content="app-id=0000000000">
     <meta name="color-scheme" content="light dark">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-    <title>StudioMemory™ Pro — Your Creative Life, Remembered</title>
+    <title>StudioMemory™ Pro</title>
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -17,12 +16,12 @@
     <meta name="author" content="Bradley Freedman">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="StudioMemory™ Pro — Your Creative Life, Remembered">
+    <meta property="og:title" content="StudioMemory™ Pro">
     <meta property="og:description" content="A premium archive for creators and makers. Securely record, organize, and sync your creative collection across iPhone, iPad, and Mac.">
     <meta property="og:image" content="hero.webp">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="StudioMemory™ Pro — Your Creative Life, Remembered">
+    <meta name="twitter:title" content="StudioMemory™ Pro">
     <meta name="twitter:description" content="A premium archive for creators and makers. Securely record, organize, and sync your creative collection across iPhone, iPad, and Mac.">
     <meta name="twitter:image" content="hero.webp">
 
@@ -142,6 +141,14 @@
         /* Ensures brand name remains on one line */
         .brand-no-wrap {
             white-space: nowrap; 
+        }
+
+        /* Styles the sub-headline to balance between H1 and paragraph */
+        .hero-slogan {
+            font-size: clamp(24px, 3.5vw, 30px);
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 4px;
         }
 
         .hero-content p {
@@ -328,6 +335,31 @@
             opacity: 0;
             pointer-events: none; /* Prevents clicks while invisible */
             transform: translateY(-50%) scale(0.9); /* Adds a slight shrinking effect as it fades */
+        }
+
+        /* --- CAROUSEL DOTS --- */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 24px;
+            padding-bottom: 10px;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--text-secondary);
+            opacity: 0.3;
+            cursor: pointer;
+            transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            opacity: 1;
+            background-color: var(--text-main);
+            transform: scale(1.2);
         }
 
         /* --- NATIVE DIALOG LIGHTBOX --- */
@@ -581,7 +613,7 @@
     <main>
         <section class="hero">
             <div class="hero-content">
-                <h1><span class="brand-no-wrap">StudioMemory&trade; Pro&nbsp;&mdash;</span><br>your creative life, remembered.</h1>
+                <h1>StudioMemory&trade; Pro<br><span class="hero-slogan">Your creative life, remembered.</span></h1>
                 <p>A simple, powerful archive for artists, creators, and makers. Securely organize your life's work with photos and the details you care about, so everything is remembered.</p>
                 <div class="cta-buttons">
                     <a href="#" aria-label="Download on the App Store">
@@ -591,7 +623,7 @@
                         <img src="mac-app-store-badge.svg" alt="Download on the Mac App Store" class="store-badge">
                     </a>
                 </div>
-                <p class="hero-pricing-note">Free up to 15 works &bull; No account required</p>
+                <p class="hero-pricing-note">Currently in Beta Testing &bull; Download links coming soon</p>
             </div>
             <div class="hero-image">
                 <img src="hero.webp" width="2400" height="1600" fetchpriority="high" loading="eager" alt="Mockup of StudioMemory Pro showing iPhone, iPad, and Mac screens">
@@ -645,6 +677,8 @@
            <button class="carousel-arrow next" id="nextBtn" aria-label="Next">
                 <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
             </button>
+
+            <div class="carousel-dots" id="carouselDots"></div>
         </div>
 
         <div class="section-header">
@@ -700,7 +734,7 @@
         <footer>
             <div class="footer-cta">
                 <h2>Try it free. Upgrade anytime.</h2>
-                <p class="pricing-tag">Free up to 15 works • Upgrade to 10,000 works</p>
+                <p class="pricing-tag">Currently in Beta Testing • Download links coming soon</p>
                 <div class="cta-buttons">
                     <a href="#" aria-label="Download on the App Store">
                         <img src="app-store-badge.svg" alt="Download on the App Store" class="store-badge">
@@ -727,11 +761,27 @@
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const windowEl = document.querySelector('.carousel-window');
+        const dotsContainer = document.getElementById('carouselDots');
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        
+        // 1. Dynamically create dots
+        carouselItems.forEach((item, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('carousel-dot');
+            if (index === 0) dot.classList.add('active');
+            
+            // Native Apple-style smooth scrolling directly to the exact item
+            dot.addEventListener('click', () => {
+                item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            });
+            
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.carousel-dot');
         
         function moveCarousel(direction) {
-            // The item width (353.33) + gap (20)
-            const scrollAmount = 373.33; 
-            
+            const scrollAmount = 373.33; // Item width + gap
             if (direction === 'next') {
                 windowEl.scrollBy({ left: scrollAmount, behavior: 'smooth' });
             } else {
@@ -739,17 +789,14 @@
             }
         }
 
-        // --- SMART ARROWS LOGIC ---
-        function updateArrowVisibility() {
-            // 1. Hide left arrow if at the very beginning
-            if (windowEl.scrollLeft <= 5) { // 5px buffer for safety
+        // 2. Update Arrows
+        function updateArrows() {
+            if (windowEl.scrollLeft <= 5) {
                 prevBtn.classList.add('hidden');
             } else {
                 prevBtn.classList.remove('hidden');
             }
 
-            // 2. Hide right arrow if at the very end
-            // Math.ceil prevents fractional pixel bugs on Mac Retina displays
             if (Math.ceil(windowEl.scrollLeft + windowEl.clientWidth) >= windowEl.scrollWidth - 5) {
                 nextBtn.classList.add('hidden');
             } else {
@@ -757,13 +804,46 @@
             }
         }
 
-        // Listen for scrolling, resizing, and initial page load to update arrows
-        windowEl.addEventListener('scroll', updateArrowVisibility);
-        window.addEventListener('resize', updateArrowVisibility);
-        window.addEventListener('load', updateArrowVisibility);
+        windowEl.addEventListener('scroll', updateArrows);
+        window.addEventListener('resize', updateArrows);
+        window.addEventListener('load', updateArrows);
 
         prevBtn.addEventListener('click', () => moveCarousel('prev'));
         nextBtn.addEventListener('click', () => moveCarousel('next'));
+
+        // 3. Center-Calculation Logic for flawless dot synchronization on all screen sizes
+        function updateDots() {
+            // Find the exact pixel center of the visible carousel window
+            const windowCenter = windowEl.getBoundingClientRect().left + (windowEl.clientWidth / 2);
+            let closestIndex = 0;
+            let minDistance = Infinity;
+
+            // Check every image to see which one's center is closest to the window's center
+            carouselItems.forEach((item, index) => {
+                const itemRect = item.getBoundingClientRect();
+                const itemCenter = itemRect.left + (itemRect.width / 2);
+                const distance = Math.abs(windowCenter - itemCenter);
+
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestIndex = index;
+                }
+            });
+
+            // Update the dots to match the closest image
+            dots.forEach((dot, index) => {
+                if (index === closestIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // Listen for scrolling and resizing to keep dots perfectly synced
+        windowEl.addEventListener('scroll', updateDots);
+        window.addEventListener('resize', updateDots);
+        window.addEventListener('load', updateDots);
 
         // --- NATIVE DIALOG LIGHTBOX LOGIC ---
         const lightbox = document.getElementById('lightbox');
