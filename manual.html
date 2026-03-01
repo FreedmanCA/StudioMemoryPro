@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
   <title>User Guide - StudioMemory Pro</title>
   <meta name="description" content="Learn how to use StudioMemory Pro to archive your creative works. A complete guide to QuickDetails™, iCloud sync, and managing your photo gallery on iPhone, iPad, and Mac.">
   <meta name="keywords" content="StudioMemory Pro guide, how to use StudioMemory, artist archive manual, maker project tracker instructions, QuickDetails help, art collection sync">
@@ -84,7 +87,7 @@
         color: var(--apple-blue); 
         text-decoration: none; 
         font-size: 17px;
-        transition: font-weight 0.1s ease-in-out;
+        transition: opacity 0.2s ease;
     }
 
     .back-link::before {
@@ -98,9 +101,7 @@
     }
 
     .back-link:hover { 
-        color: var(--apple-blue);
-        font-weight: 600;
-        text-decoration: none;
+        opacity: 0.7;
     }
 
     footer { 
@@ -112,6 +113,34 @@
       text-align: center;
     }
     strong { font-weight: 600; }
+
+/* --- NATIVE DARK MODE SUPPORT --- */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --apple-blue: #2997ff;
+            --text-main: #f5f5f7;
+            --text-secondary: #86868b;
+            --bg-light: #1c1c1e;
+        }
+
+        body {
+            background-color: #000000;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            border-bottom: 1px solid #38383a;
+        }
+
+        footer {
+            border-top: 1px solid #38383a;
+        }
+    }
+
   </style>
 </head>
 <body>
@@ -201,7 +230,7 @@
     <p><strong>Camera Permissions:</strong> Check Settings > Privacy > Camera if the camera doesn't open.</p>
 
     <footer>
-      &copy; 2026 Bradley Freedman. All rights reserved.
+      Copyright &copy; 2026 Bradley Freedman. All Rights Reserved.
     </footer>
   </div>
 </body>

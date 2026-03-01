@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
     <title>About - StudioMemory Pro</title>
     <link rel="icon" type="image/jpeg" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
@@ -89,7 +92,7 @@
             color: var(--apple-blue); 
             text-decoration: none; 
             font-size: 17px;
-            transition: font-weight 0.1s ease-in-out;
+            transition: opacity 0.2s ease;
         }
 
         .back-link::before {
@@ -102,7 +105,7 @@
         }
 
         .back-link:hover { 
-            font-weight: 600;
+            opacity: 0.7;
         }
 
         /* App Header Section - Matches AboutView.swift */
@@ -168,13 +171,38 @@
             color: var(--text-main);
             font-size: 12px;
             font-weight: 400;
-            transition: font-weight 0.1s ease-in-out;
+            transition: opacity 0.2s ease;
         }
 
         .footer-nav a:hover {
-            color: var(--apple-blue);
-            font-weight: 600;
-            text-decoration: none;
+            opacity: 0.7;
+        }
+
+/* --- NATIVE DARK MODE SUPPORT --- */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --apple-blue: #2997ff;
+                --text-main: #f5f5f7;
+                --text-secondary: #86868b;
+                --bg-light: #1c1c1e;
+            }
+
+            body {
+                background-color: #000000;
+            }
+
+            nav {
+                background: rgba(0, 0, 0, 0.8);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            hr {
+                border-top: 1px solid #38383a;
+            }
+
+            .footer-nav {
+                border-top: 1px solid #38383a;
+            }
         }
 
     </style>
@@ -204,9 +232,9 @@
         <section class="legal-content">
             <div class="legal-text">
                 <p>Designed and Developed by Bradley Freedman in Vancouver, Canada.</p>
-                <p>StudioMemory Pro and QuickDetails are trademarks of Bradley Freedman.</p>
-                <p>&copy; 2026 Bradley Freedman. All rights reserved.</p>
-                <p>Use of this application is subject to the terms of the Standard Apple Licensed Application End User License Agreement.</p>
+                <p>StudioMemory™, StudioMemory Pro™, and QuickDetails™ are trademarks of Bradley Freedman.</p>
+                <p>Copyright &copy; 2026 Bradley Freedman. All Rights Reserved.</p>
+                <p>Use of StudioMemory Pro is subject to the terms of the Standard Apple Licensed Application End User License Agreement.</p>
             </div>
         </section>
 

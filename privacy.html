@@ -13,6 +13,9 @@
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="apple-touch-icon" href="logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
   <style>
     :root {
         --apple-blue: #0071e3;
@@ -72,7 +75,7 @@
 
     h1 { font-size: 32px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.02em; }
     h2 { font-size: 21px; font-weight: 600; margin-top: 40px; margin-bottom: 15px; }
-    p { margin-bottom: 15px; font-size: 17px; color: #333; }
+    p { margin-bottom: 15px; font-size: 17px; color: var(--text-main); }
     
     .meta { color: var(--text-secondary); margin-bottom: 40px; font-size: 14px; }
     
@@ -83,7 +86,7 @@
         color: var(--apple-blue); 
         text-decoration: none; 
         font-size: 17px;
-        transition: font-weight 0.1s ease-in-out;
+        transition: opacity 0.2s ease;
     }
 
     .back-link::before {
@@ -97,9 +100,7 @@
     }
 
     .back-link:hover { 
-        color: var(--apple-blue);
-        font-weight: 600;
-        text-decoration: none;
+        opacity: 0.7;
     }
 
     footer { 
@@ -110,6 +111,30 @@
       padding: 40px 0;
       text-align: center;
     }
+
+/* --- NATIVE DARK MODE SUPPORT --- */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --apple-blue: #2997ff;
+            --text-main: #f5f5f7;
+            --text-secondary: #86868b;
+            --bg-light: #1c1c1e;
+        }
+
+        body {
+            background-color: #000000;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer {
+            border-top: 1px solid #38383a;
+        }
+    }
+
   </style>
 </head>
 <body>
