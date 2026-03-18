@@ -75,7 +75,6 @@
 
     h1 { font-size: 32px; font-weight: 700; margin-bottom: 30px; letter-spacing: -0.02em; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px; }
     
-    /* Updated h2 to include scroll-margin to prevent overlap with sticky nav */
     h2 { 
         font-size: 24px; 
         font-weight: 600; 
@@ -125,7 +124,7 @@
         font-size: 20px;
         border-bottom: none;
         padding-bottom: 0;
-        scroll-margin-top: 0; /* Reset for TOC header specifically */
+        scroll-margin-top: 0;
     }
     .toc-container ul {
         list-style: none;
@@ -133,15 +132,23 @@
         margin-bottom: 0;
     }
     .toc-container li {
-        margin-bottom: 8px;
+        margin-bottom: 10px;
         font-size: 16px;
     }
     .toc-container a {
         color: var(--apple-blue);
         text-decoration: none;
+        display: flex;
+        align-items: flex-start;
     }
     .toc-container a:hover {
         text-decoration: underline;
+    }
+    .toc-number {
+        min-width: 32px;
+        flex-shrink: 0;
+        color: var(--text-secondary);
+        font-variant-numeric: tabular-nums;
     }
 
     footer { 
@@ -199,16 +206,16 @@
     <div class="toc-container">
       <h2>Table of Contents</h2>
       <ul>
-        <li><a href="#welcome">1. Welcome to StudioMemory Pro</a></li>
-        <li><a href="#collection">2. Creating and Managing Your Collection</a></li>
-        <li><a href="#gallery">3. The Photo Gallery</a></li>
-        <li><a href="#status">4. Tracking Status</a></li>
-        <li><a href="#quickdetails">5. Working Faster with Quick Details™</a></li>
-        <li><a href="#portability">6. Printing/Exporting and Portability</a></li>
-        <li><a href="#customizing">7. Customizing Your Experience</a></li>
-        <li><a href="#data">8. Your Data</a></li>
-        <li><a href="#licensing">9. Licensing and Limits</a></li>
-        <li><a href="#support">10. Technical Support</a></li>
+        <li><a href="#welcome"><span class="toc-number">1.</span> <span>Welcome to StudioMemory Pro</span></a></li>
+        <li><a href="#collection"><span class="toc-number">2.</span> <span>Creating and Managing Your Collection</span></a></li>
+        <li><a href="#gallery"><span class="toc-number">3.</span> <span>The Photo Gallery</span></a></li>
+        <li><a href="#status"><span class="toc-number">4.</span> <span>Tracking Status</span></a></li>
+        <li><a href="#quickdetails"><span class="toc-number">5.</span> <span>Working Faster with Quick Details™</span></a></li>
+        <li><a href="#portability"><span class="toc-number">6.</span> <span>Printing/Exporting and Portability</span></a></li>
+        <li><a href="#customizing"><span class="toc-number">7.</span> <span>Customizing Your Experience</span></a></li>
+        <li><a href="#data"><span class="toc-number">8.</span> <span>Your Data</span></a></li>
+        <li><a href="#licensing"><span class="toc-number">9.</span> <span>Licensing and Limits</span></a></li>
+        <li><a href="#support"><span class="toc-number">10.</span> <span>Technical Support</span></a></li>
       </ul>
     </div>
 
