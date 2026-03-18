@@ -32,7 +32,7 @@
       line-height: 1.5;
       margin: 0;
       padding: 0;
-      -webkit-font-smoothing: antialiased;`
+      -webkit-font-smoothing: antialiased;
     }
 
     nav {
@@ -74,7 +74,17 @@
     }
 
     h1 { font-size: 32px; font-weight: 700; margin-bottom: 30px; letter-spacing: -0.02em; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px; }
-    h2 { font-size: 24px; font-weight: 600; margin-top: 50px; margin-bottom: 15px; color: var(--text-main); }
+    
+    /* Updated h2 to include scroll-margin to prevent overlap with sticky nav */
+    h2 { 
+        font-size: 24px; 
+        font-weight: 600; 
+        margin-top: 50px; 
+        margin-bottom: 15px; 
+        color: var(--text-main); 
+        scroll-margin-top: 70px; 
+    }
+
     h3 { font-size: 18px; font-weight: 600; margin-top: 25px; margin-bottom: 10px; }
     p { margin-bottom: 15px; font-size: 17px; }
     ul { margin-bottom: 20px; padding-left: 20px; }
@@ -104,6 +114,36 @@
         opacity: 0.7;
     }
 
+    .toc-container {
+        background-color: var(--bg-light);
+        padding: 24px;
+        border-radius: 12px;
+        margin: 32px 0;
+    }
+    .toc-container h2 {
+        margin-top: 0;
+        font-size: 20px;
+        border-bottom: none;
+        padding-bottom: 0;
+        scroll-margin-top: 0; /* Reset for TOC header specifically */
+    }
+    .toc-container ul {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+    .toc-container li {
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+    .toc-container a {
+        color: var(--apple-blue);
+        text-decoration: none;
+    }
+    .toc-container a:hover {
+        text-decoration: underline;
+    }
+
     footer { 
       margin-top: 80px; 
       font-size: 12px; 
@@ -114,7 +154,6 @@
     }
     strong { font-weight: 600; }
 
-/* --- NATIVE DARK MODE SUPPORT --- */
     @media (prefers-color-scheme: dark) {
         :root {
             --apple-blue: #2997ff;
@@ -157,10 +196,26 @@
 
     <h1>StudioMemory Pro User Guide</h1>
 
-    <h2>1. Welcome to StudioMemory Pro</h2>
-    <p>StudioMemory Pro is a powerful tool designed to help artists, creators, and makers easily maintain a searchable collection of their creative works, with photos and important details. The collection is locally stored on Apple devices, and optional use of Apple’s iCloud service can sync the collection across devices.</p>
+    <div class="toc-container">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#welcome">1. Welcome to StudioMemory Pro</a></li>
+        <li><a href="#collection">2. Creating and Managing Your Collection</a></li>
+        <li><a href="#gallery">3. The Photo Gallery</a></li>
+        <li><a href="#status">4. Tracking Status</a></li>
+        <li><a href="#quickdetails">5. Working Faster with Quick Details™</a></li>
+        <li><a href="#portability">6. Printing/Exporting and Portability</a></li>
+        <li><a href="#customizing">7. Customizing Your Experience</a></li>
+        <li><a href="#data">8. Your Data</a></li>
+        <li><a href="#licensing">9. Licensing and Limits</a></li>
+        <li><a href="#support">10. Technical Support</a></li>
+      </ul>
+    </div>
 
-    <h2>2. Creating and Managing Your Collection</h2>
+    <h2 id="welcome">1. Welcome to StudioMemory Pro</h2>
+    <p>StudioMemory Pro is a private archive app built for artists, creators, and makers to maintain and manage a collection of their creative works on their iPhone, iPad, and Mac. StudioMemory Pro collects no personal data, runs no ads, and requires no account. The collection is locally stored on Apple devices, and optional use of Apple’s iCloud service can sync the collection across devices.</p>
+
+    <h2 id="collection">2. Creating and Managing Your Collection</h2>
     <p>To start creating your collection, add a new work with photos and details. Each work is automatically assigned a unique ID (e.g. ABC123XY), which can be used to quickly locate and identify the work in your collection.</p>
     <p><strong>On Mac:</strong> Press Command + N or select File > New Work.</p>
     <p><strong>On iPhone/iPad:</strong> Tap the + (Plus) icon at the top of your collection.</p>
@@ -173,7 +228,7 @@
       <li><strong>Batch Actions:</strong> You can use the “Select” button to manage multiple works simultaneously.</li>
     </ul>
 
-    <h2>3. The Photo Gallery</h2>
+    <h2 id="gallery">3. The Photo Gallery</h2>
     <p>Each work has a photo gallery which you can manage using various tools.</p>
     <ul>
       <li><strong>Limits:</strong> Each work can have up to six photos. Photos can be included when a work is added to your collection or afterwards.</li>
@@ -184,20 +239,20 @@
       <li><strong>Save to Photos:</strong> StudioMemory Pro optimizes each photo for performance. An optional setting allows photos taken within StudioMemory Pro to be saved in their original format to your device’s Photo library.</li>
     </ul>
 
-    <h2>4. Tracking Status</h2>
+    <h2 id="status">4. Tracking Status</h2>
     <p>Each work has a “status” - Available, Sold, Not for Sale.</p>
     <p>An optional setting shows the status of each work in your collection.</p>
     <p>The status of a work determines the kinds of information you can record about the work. For example, setting a work as “Sold” unlocks additional fields.</p>
     <p>You can change the status of a work at any time.</p>
 
-    <h2>5. Working Faster with Quick Details™</h2>
+    <h2 id="quickdetails">5. Working Faster with Quick Details™</h2>
     <p>QuickDetails™ is an optional, easy-to-use way to create reusable and changeable prompts for adding repetitive details to notes about a work.</p>
     <p><strong>Turn it On/Off:</strong> An optional setting displays or hides the QuickDetails icons in the notes fields.</p>
     <p><strong>How to Use:</strong> Tap the QuickDetails icon in any notes field to display a QuickDetails sheet with prompts for you to add details to insert into the notes.</p>
     <p><strong>Edit Prompts:</strong> You can edit (e.g., add, change, reorder, and delete) the prompts in each QuickDetails sheet.</p>
     <p><strong>Persistence:</strong> Once you create a prompt in a QuickDetails sheet, it will remain in the sheet until you change or delete the prompt.</p>
 
-    <h2>6. Printing/Exporting and Portability</h2>
+    <h2 id="portability">6. Printing/Exporting and Portability</h2>
     <p>Your data belongs to you, and StudioMemory Pro provides tools to share and protect your data.</p>
     <ul>
       <li><strong>PDFs:</strong> You can generate a printable and shareable PDF of one or more works with all details and photos.</li>
@@ -206,7 +261,7 @@
       <li><strong>Full Archive:</strong> You can create a complete archive of all works in industry-standard formats.</li>
     </ul>
 
-    <h2>7. Customizing Your Experience</h2>
+    <h2 id="customizing">7. Customizing Your Experience</h2>
     <p>You can use the Settings menu to customize your use of StudioMemory Pro:</p>
     <ul>
       <li><strong>QuickDetails:</strong> You can choose to display QuickDetails prompts to insert details into notes.</li>
@@ -216,7 +271,7 @@
       <li><strong>Work Count/Last Synced:</strong> You can choose to display the total number of works and a last synced timestamp.</li>
     </ul>
 
-    <h2>8. Your Data</h2>
+    <h2 id="data">8. Your Data</h2>
     <ul>
       <li><strong>Local Data Storage:</strong> StudioMemory Pro stores your data on your devices.</li>
       <li><strong>iCloud Sync:</strong> Your data will be stored in your private iCloud database and synced across your Apple devices if you choose to use the service.</li>
@@ -224,14 +279,14 @@
       <li><strong>Archive and Restore:</strong> You can create archives of all works and photos and later restore them.</li>
     </ul>
 
-    <h2>9. Licensing and Limits</h2>
-    <p><strong>Licensing:</strong> A free license allows up to 15 works; a paid license allows up to 2,500 works.</p>
+    <h2 id="licensing">9. Licensing and Limits</h2>
+    <p><strong>Licensing:</strong> A free license allows up to 15 works; a paid license allows up to 2,500 works on all devices.</p>
     <p><strong>New Devices:</strong> Use the “Restore Purchases” button to reactivate your license.</p>
     <p><strong>Change in License Status:</strong> If a license expires, you can manage existing works but cannot add new ones.</p>
     <p><strong>iCloud Storage & Sync:</strong> iCloud storage and sync capacity is determined by your personal Apple subscription and available space.</p>
 
 
-    <h2>10. Technical Support</h2>
+    <h2 id="support">10. Technical Support</h2>
     <p><strong>General:</strong> Contact technical support by email at freewolfsoftware@gmail.com.</p>
     <p><strong>Diagnostic Reports:</strong> Use the “Diagnostic Reports” feature in Settings to create a technical log.</p>
     <p><strong>Camera Permissions:</strong> Check Settings > Privacy > Camera if the camera doesn't open.</p>
