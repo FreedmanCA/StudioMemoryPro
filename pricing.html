@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - StudioMemory Pro</title>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1d1d1f;
+            --text-secondary: #86868b;
+            --accent-color: #0071e3;
+            --card-bg: #f5f5f7;
+            --border-color: #d2d2d7;
+            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #000000;
+                --text-color: #f5f5f7;
+                --text-secondary: #86868b;
+                --accent-color: #2997ff;
+                --card-bg: #1d1d1f;
+                --border-color: #424245;
+            }
+
+            nav {
+                background: rgba(0, 0, 0, 0.8);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10%;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 19px;
+            transition: opacity 0.2s ease;
+        }
+
+        .logo-container:hover {
+            opacity: 0.7;
+        }
+
+        .logo-img {
+            width: 32px;
+            height: 32px;
+            border-radius: 7px; 
+            object-fit: cover;
+        }
+
+        /* Container & Back Link */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+	    padding: 40px 20px;
+        }
+
+        .back-link-wrapper {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .back-link { 
+            display: inline-flex; 
+            align-items: center;
+            color: var(--text-color); 
+            text-decoration: none; 
+            font-size: 17px;
+            transition: opacity 0.2s ease;
+        }
+
+        .back-link::before {
+            content: '‹';
+            font-size: 24px;
+            margin-right: 6px;
+            margin-top: -2px;
+            display: inline-block;
+            font-weight: 400 !important;
+        }
+
+        .back-link:hover { 
+            opacity: 0.7;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 21px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 14fr 14fr;
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        @media (max-width: 734px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 18px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            letter-spacing: normal;
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 30px;
+            min-height: 44px;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 40px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .features-list li {
+            font-size: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: 4px;
+        }
+
+        .btn {
+            display: block;
+            text-align: center;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: 500;
+            padding: 12px 24px;
+            border-radius: 980px;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+        }
+
+        .faq-section {
+            max-width: 680px;
+            margin: 0 auto;
+            border-top: 1px solid var(--border-color);
+            padding-top: 60px;
+        }
+
+        .faq-section h3 {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.007em;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 32px;
+        }
+
+        .faq-item h4 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .faq-item p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Unified Footer Navigation */
+        .footer-nav {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            border-top: 1px solid var(--border-color);
+            padding: 30px 0 60px;
+        }
+
+        .footer-nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 12px;
+            font-weight: 400;
+            transition: opacity 0.2s ease;
+        }
+
+        .footer-nav a:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo-container">
+            <img src="logo.png" alt="StudioMemory Pro Logo" class="logo-img">
+            StudioMemory Pro
+        </a>
+    </nav>
+
+    <div class="container">
+        <div class="back-link-wrapper">
+            <a href="index.html" class="back-link">Back</a>
+        </div>
+
+        <header>
+            <h1>Simple, Transparent Pricing</h1>
+            <p class="subtitle">Enjoy full application functionality on your iPhone, iPad, and Mac.</p>
+        </header>
+
+        <main>
+            <section class="pricing-grid">
+                <div class="card">
+                    <div>
+                        <div class="card-header">
+                            <h2>Free License</h2>
+                            <p class="card-description">For a small collection.</p>
+                        </div>
+                        <div class="price">$0 <span></span></div>
+                        <ul class="features-list">
+                            <li><strong>Limit of 15 creative works</strong></li>
+                            <li>Full multiplatform functionality</li>
+                            <li>iCloud Sync across your devices</li>
+                            <li>PDF portfolios & QR label generation</li>
+                            <li>Full local backups & portable archive exports</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn btn-secondary">Download Free</a>
+                </div>
+
+               <div class="card">
+                    <div>
+                        <div class="card-header">
+                            <h2>Universal License</h2>
+                            <p class="card-description">For a studio-size collection.</p>
+                        </div>
+                        <div class="price">$36 <span>/ Year</span> <span style="font-size: 24px; margin: 0 8px; color: var(--border-color);">or</span> $7 <span>/ Month</span></div>
+                        <ul class="features-list">
+                            <li><strong>Limit of 2,500 creative works</strong></li>
+                            <li>Full multiplatform functionality</li>
+                            <li>iCloud Sync across your devices</li>
+                            <li>PDF portfolios & QR label generation</li>
+                            <li>Full local backups & portable archive exports</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn">Purchase in App</a>
+                </div>
+            </section>
+
+            <section class="faq-section">
+                <h3>Pricing & Licensing FAQ</h3>
+                
+                <div class="faq-item">
+                    <h4>Are features locked behind the paid subscription tier?</h4>
+                    <p>No. StudioMemory Pro does not restrict features on the free license. Both licenses have identical features, including iCloud synchronization, printing, backups, and exports.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Does one license cover my Mac, my iPad, and my iPhone?</h4>
+                    <p>Yes. StudioMemory Pro uses an integrated Universal License model. Your single subscription purchase lets you use StudioMemory Pro across your personal iPhone, iPad, and Mac simultaneously.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>What happens if my paid license expires or is canceled?</h4>
+                    <p>Your database belongs entirely to you. If your paid license expires, you may continue to use StudioMemory Pro to browse, search, backup, and export your current collection. You will not be able to add new works.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="manual.html">User Guide</a>
+	    <a href="faq.html">FAQ</a>
+            <a href="mailto:support@studiomemorypro.com?subject=StudioMemory%20Pro%20Support%20Request">Contact Support</a>
+        </footer>
+    </div>
+
+</body>
+</html>
