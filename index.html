@@ -545,6 +545,30 @@
             }
         }
 
+        /* Mac Desktop Grid Layout */
+        @media (min-width: 1025px) {
+            .carousel-outer-wrapper::before,
+            .carousel-outer-wrapper::after {
+                display: none;
+            }
+            .carousel-window {
+                overflow: visible;
+            }
+            .carousel-track {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px 20px;
+                width: 100%;
+            }
+            .carousel-item {
+                width: auto;
+            }
+            .carousel-arrow,
+            .carousel-dots {
+                display: none;
+            }
+        }
+
         /* Multiplatform Responsive Tweaks */
         @media (max-width: 1024px) {
             .hero {
