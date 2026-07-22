@@ -7,19 +7,37 @@
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
     <title>StudioMemory | Watch</title>
+    <link rel="canonical" href="https://studiomemoryapp.com/watch.html">
+    <meta name="description" content="Watch short videos showing how StudioMemory helps you archive, organize, and manage your creative works on iPhone, iPad, and Mac.">
+    <meta property="og:title" content="StudioMemory | Watch">
+    <meta property="og:description" content="Watch StudioMemory in action — archiving, organizing, and managing a creative collection.">
+    <meta property="og:image" content="https://studiomemoryapp.com/OGImage.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="StudioMemory">
+    <meta property="og:url" content="https://studiomemoryapp.com/watch.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="StudioMemory | Watch">
+    <meta name="twitter:description" content="Watch StudioMemory in action — archiving, organizing, and managing a creative collection.">
+    <meta name="twitter:image" content="https://studiomemoryapp.com/OGImage.webp">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="stylesheet" href="shared.css">
 
     <style>
-        :root {
-            --apple-blue: #0071e3;
-            --text-main: #1d1d1f;
-            --text-secondary: #424245;
-            --bg-light: #f5f5f7;
-            --border-color: #d2d2d7;
-            --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        }
+.mobile-copy-break {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-copy-break {
+        display: block;
+    }
+}
+
 
         body {
             margin: 0;
@@ -32,90 +50,17 @@
             letter-spacing: -0.022em;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         main {
             overflow-x: hidden;
-            min-height: calc(100vh - 48px - 120px); /* Keeps footer layout proportional */
+            flex: 1;
         }
 
-        /* Navigation Bar */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 10%;
-            height: 48px;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 19px;
-            transition: opacity 0.2s ease;
-        }
-        .logo-container:hover { opacity: 0.7; }
-
-        .logo-img {
-            width: 32px;
-            height: 32px;
-            border-radius: 7px; 
-            object-fit: cover;
-        }
-
-        /* Desktop Navigation Links */
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-main);
-            font-size: 14px;
-            font-weight: 500;
-            opacity: 0.6; /* Mutes inactive links */
-            transition: opacity 0.2s ease;
-        }
-        
-        /* Light up links to full brightness on hover or if it is the current page */
-        .nav-links a:hover,
-        .nav-links a.current {
-            opacity: 1;
-        }
-
-        /* Hamburger Menu Toggle Button */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 22px;
-            height: 16px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            z-index: 1001;
-        }
-
-        .hamburger-bar {
-            width: 100%;
-            height: 2px;
-            background-color: var(--text-main);
-            transition: transform 0.25s ease, opacity 0.25s ease;
-            transform-origin: left center;
-        }
+        /* Nav, hamburger menu, and mobile overlay are in shared.css */
 
         /* Video Placeholder Section */
         .video-section {
@@ -138,26 +83,108 @@
             margin-bottom: 40px;
         }
 
-        .video-placeholder {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            background-color: var(--bg-light);
+	.video-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .video-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 360px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 240px;
+    }
+}
+
+        .video-card {
+            appearance: none;
             border: 1px solid var(--border-color);
             border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            font-size: 16px;
-            font-weight: 500;
-            margin-bottom: 30px;
+            padding: 0;
+            overflow: hidden;
+            background: var(--bg-light);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
+        .video-card:hover,
+        .video-card:focus-visible {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+            outline: none;
+        }
+
+        .video-card img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            object-fit: cover;
+            background: #000;
+        }
+
+        .video-modal {
+            border: 0;
+            padding: 24px;
+            max-width: none;
+            max-height: none;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            place-items: center;
+        }
+
+        .video-modal[open] {
+            display: grid;
+        }
+
+        .video-modal::backdrop {
+            background: rgba(0, 0, 0, 0.95);
+        }
+
+        .video-modal-content {
+    position: relative;
+    width: min(90vw, 420px);
+    aspect-ratio: 9 / 16;
+}
+
+        .video-modal iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 16px;
+    background: #000;
+}
+
+        .video-modal-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            width: 38px;
+            height: 38px;
+            border: 0;
+            border-radius: 50%;
+            background: #fff;
+            color: #1d1d1f;
+            font-size: 27px;
+            line-height: 1;
+            cursor: pointer;
+        }
+        
         /* Footer */
         footer {
             padding: 40px 10%;
             text-align: center;
-            background-color: #fafafa;
             border-top: 1px solid #f0f0f0;
         }
 
@@ -167,66 +194,10 @@
             gap: 30px;
         }
 
-        .footer-nav a {
-            text-decoration: none;
-            color: var(--text-main);
-            font-size: 12px;
-            opacity: 0.6; /* Mutes footer links by default */
-            transition: opacity 0.2s ease;
-        }
-        .footer-nav a:hover {
-            opacity: 1; /* Lights up to full brightness on hover */
-        }
+        /* .footer-nav a link styling is in shared.css */
 
-        /* Mobile Responsive Navigation Overlay */
+        /* Mobile: page-specific footer-nav layout only (nav overlay is in shared.css) */
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex;
-            }
-
-            .nav-links {
-                display: flex;
-                flex-direction: column;
-                gap: 0;
-                position: fixed;
-                top: 48px;
-                left: 0;
-                width: 100%;
-                height: 0;
-                background-color: #ffffff;
-                opacity: 0;
-                visibility: hidden;
-                overflow: hidden;
-                transition: height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
-            }
-
-            .nav-links a {
-                width: 100%;
-                padding: 20px 10%;
-                font-size: 18px;
-                font-weight: 500;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-                box-sizing: border-box;
-            }
-
-            .nav-links.active {
-                height: calc(100vh - 48px);
-                opacity: 1;
-                visibility: visible;
-            }
-
-            /* Morph bars into an 'X' symbol */
-            .menu-toggle.open .hamburger-bar:nth-child(1) {
-                transform: rotate(45deg) translate(1px, -1px);
-            }
-            .menu-toggle.open .hamburger-bar:nth-child(2) {
-                opacity: 0;
-                transform: scaleX(0);
-            }
-            .menu-toggle.open .hamburger-bar:nth-child(3) {
-                transform: rotate(-45deg) translate(1px, 1px);
-            }
-
             .footer-nav {
                 flex-direction: column;
                 gap: 15px;
@@ -234,36 +205,14 @@
         }
 
         /* Native Dark Mode Settings */
+        /* Color variables and nav dark styling are in shared.css */
         @media (prefers-color-scheme: dark) {
-            :root {
-                --apple-blue: #2997ff;
-                --text-main: #f5f5f7;
-                --text-secondary: #a1a1a6;
-                --bg-light: #1c1c1e;
-                --border-color: #38383a;
-            }
-
             body {
                 background-color: #000000;
             }
 
-            nav {
-                background: rgba(0, 0, 0, 0.8);
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-
             footer {
-                background-color: #000000;
                 border-top: 1px solid #38383a;
-            }
-        }
-
-        @media (prefers-color-scheme: dark) and (max-width: 768px) {
-            .nav-links {
-                background-color: #000000;
-            }
-            .nav-links a {
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
         }
     </style>
@@ -276,7 +225,7 @@
             StudioMemory
         </a>
         
-        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
             <span class="hamburger-bar"></span>
             <span class="hamburger-bar"></span>
             <span class="hamburger-bar"></span>
@@ -286,7 +235,6 @@
             <a href="about.html">About</a>
             <a href="manual.html">User Guide</a>
             <a href="faq.html">FAQ</a>
-            <a href="pricing.html">Pricing</a>
             <a href="watch.html" class="current">Watch</a>
         </div>
     </nav>
@@ -294,20 +242,105 @@
     <main>
         <section class="video-section">
             <h1>StudioMemory in Action</h1>
-            <p>Watch how easy it is to archive, organize, and manage your collection of works.</p>
+            <p>Watch how easy it is to archive, organize,<br class="mobile-copy-break"> and manage your collection of works.</p>
             
-            <div class="video-placeholder">
-                Demonstration Video Placeholder
-            </div>
+<div class="video-grid">
+    <button class="video-card"
+        data-youtube="https://www.youtube-nocookie.com/embed/WWXs8VEtZlI"
+        aria-label="Play One Collection">
+    <img src="One-Collection-Poster.webp" alt="" loading="lazy">
+</button>
+
+    <button class="video-card"
+        data-youtube="https://www.youtube-nocookie.com/embed/ftYROsVJH7c"
+        aria-label="Play Privacy by Design">
+    <img src="Privacy-by-Design-Poster.webp" alt="" loading="lazy">
+</button>
+
+<button class="video-card"
+        data-youtube="https://www.youtube-nocookie.com/embed/HP7m9yBC-rI"
+        aria-label="Play Chaos to Catalog">
+    <img src="Chaos-to-Catalog.webp" alt="" loading="lazy">
+</button>
+
+    <button class="video-card"
+        data-youtube="https://www.youtube-nocookie.com/embed/aR-FcyzOHKc" 
+        aria-label="Play Six Frames">
+    <img src="Six-Frames-Poster.webp" alt="" loading="lazy">
+</button>
+
+    <button class="video-card"
+        data-youtube="https://www.youtube-nocookie.com/embed/bkDSpCg-zd4"
+        aria-label="Play PDF Portfolios">
+    <img src="PDF-Portfolios-Poster.webp" alt="" loading="lazy">
+</button>
+
+    <button class="video-card"
+        data-youtube="https://www.youtube-nocookie.com/embed/iSNsPXtqhGc"
+        aria-label="Play QuickDetails">
+    <img src="QuickDetails-Poster.webp" alt="" loading="lazy">
+</button>
+</div>
         </section>
     </main>
 
     <footer>
         <div class="footer-nav">
             <a href="privacy.html">Privacy Policy</a>
-            <a href="mailto:support@studiomemoryapp.com?subject=StudioMemory%20Pro%20Support%20Request">Contact Support</a>
+            <a href="mailto:support@studiomemoryapp.com?subject=StudioMemory%20Support%20Request">Contact Support</a>
         </div>
     </footer>
+
+    <dialog class="video-modal" id="video-modal" aria-label="Video player">
+        <div class="video-modal-content">
+            <button class="video-modal-close" id="video-modal-close" aria-label="Close video">&times;</button>
+            <iframe
+                id="modal-video"
+                src=""
+                title="StudioMemory Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </dialog>
+
+    <script>
+        const modal = document.getElementById('video-modal');
+        const modalVideo = document.getElementById('modal-video');
+        const closeModal = document.getElementById('video-modal-close');
+
+        if (modal && modalVideo && closeModal) {
+
+            document.querySelectorAll('.video-card').forEach((card) => {
+                card.addEventListener('click', () => {
+                    try {
+                        modalVideo.src =
+                            card.dataset.youtube +
+                            "?autoplay=1&rel=0&modestbranding=1";
+                        modal.showModal();
+                        document.body.classList.add('scroll-locked');
+                    } catch (err) {
+                        console.error('Failed to open video modal:', err);
+                        document.body.classList.remove('scroll-locked');
+                    }
+                });
+            });
+
+            closeModal.addEventListener('click', () => modal.close());
+
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) modal.close();
+            });
+
+            modal.addEventListener('close', () => {
+                modalVideo.src = "";
+                document.body.classList.remove('scroll-locked');
+            });
+
+        }
+
+        </script>
+
 
     <script src="nav.js"></script>
 </body>

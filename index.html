@@ -9,62 +9,107 @@
     <title>StudioMemory | Archive App for Artists Creators Makers</title>
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <meta name="description" content="StudioMemory - Archive app for artists, creators, and makers to catalog and manage their creative works on all Apple devices with private iCloud sync.">
-    <meta name="keywords" content="StudioMemory, artist archive, creator collection, maker projects, QuickDetails, art collection, creative portfolio, iCloud sync, iOS, macOS, archive works, artist database, maker database, native app, inventory management, private archive, Apple ecosystem">
     <meta name="author" content="Nekudot Design Limited">
-    <link rel="canonical" href="https://studiomemoryapp.com">
+    <link rel="canonical" href="https://studiomemoryapp.com/">
     <meta name="robots" content="index, follow, max-image-preview:large">
 
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="StudioMemory">
     <meta property="og:title" content="StudioMemory | Archive App for Artists Creators Makers">
     <meta property="og:description" content="StudioMemory - Archive app for artists, creators, and makers to catalog and manage their creative works on all Apple devices with private iCloud sync.">
-    <meta property="og:image" content="hero.webp">
-    <meta property="og:url" content="https://studiomemoryapp.com">
+    <meta property="og:image" content="https://studiomemoryapp.com/OGImage.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://studiomemoryapp.com/">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="StudioMemory | Archive App for Artists Creators Makers">
     <meta name="twitter:description" content="StudioMemory - Archive app for artists, creators, and makers to catalog and manage their creative works on all Apple devices with private iCloud sync.">
-    <meta name="twitter:image" content="hero.webp">
-    <meta name="twitter:url" content="https://studiomemoryapp.com">
+    <meta name="twitter:image" content="https://studiomemoryapp.com/OGImage.webp">
+    <meta name="twitter:url" content="https://studiomemoryapp.com/">
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "StudioMemory",
-      "url": "https://studiomemoryapp.com",
+      "url": "https://studiomemoryapp.com/",
       "image": "https://studiomemoryapp.com/hero.webp",
       "operatingSystem": "iOS, iPadOS, macOS",
-      "applicationCategory": "MultimediaApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "description": "Free version limited to 15 works. A Universal Annual Subscription permits up to 2,500 works across iPhone, iPad, and Mac."
-      },
+      "applicationCategory": "ProductivityApplication",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Free",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "Free tier limited to 30 works."
+        },
+        {
+          "@type": "Offer",
+          "name": "Universal Monthly",
+          "price": "7",
+          "priceCurrency": "USD",
+          "description": "Universal Subscription billed monthly, up to 2,500 works across iPhone, iPad, and Mac."
+        },
+        {
+          "@type": "Offer",
+          "name": "Universal Annual",
+          "price": "36",
+          "priceCurrency": "USD",
+          "description": "Universal Subscription billed yearly, up to 2,500 works across iPhone, iPad, and Mac."
+        }
+      ],
       "author": {
         "@type": "Organization",
         "name": "Nekudot Design Limited"
       },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Nekudot Design Limited"
+      },
       "description": "StudioMemory is a photos-forward digital archive app designed specifically for artists, makers, and creators who want a permanent, secure way to catalog and manage all of their creative works. StudioMemory uses visual storytelling and efficient data entry, allowing artists, makers, and creators to preserve and manage their creative legacy across Apple devices. StudioMemory stores all data locally and uses iCloud sync for maximum privacy. One subscription covers iPhone, iPad, and Mac. StudioMemory collects no personal data, runs no ads, and requires no account. Users can export their entire archive to standard formats at any time. If a paid subscription expires, a user can keep using StudioMemory to view, manage, and export their existing collection.",
-      "featureList": "Multi-image Photo Gallery for sketches and finished works, Native iCloud Sync for iPhone iPad and Mac, Professional PDF Portfolio and QR code Label Generation for sharing and printing, Advanced Smart Search and Filtering, QuickDetails™ dynamic entry prompts.",
+      "featureList": [
+        "Multi-image Photo Gallery for sketches and finished works",
+        "Native iCloud Sync for iPhone, iPad, and Mac",
+        "Professional PDF Portfolio and QR code Label Generation for sharing and printing",
+        "Advanced Smart Search and Filtering",
+        "QuickDetails™ dynamic entry prompts"
+      ],
       "softwareVersion": "1.0",
-      "aggregateRating": null
+      "inLanguage": "en"
     }
     </script>
 
-    <style>
-        :root {
-            --apple-blue: #0071e3;
-            --text-main: #1d1d1f;
-            --text-secondary: #424245;
-            --bg-light: #f5f5f7;
-            --border-color: #d2d2d7;
-            --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        }
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Nekudot Design Limited",
+      "url": "https://nekudotdesign.com",
+      "logo": "https://nekudotdesign.com/logo.svg",
+      "email": "support@studiomemoryapp.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Vancouver",
+        "addressRegion": "BC",
+        "addressCountry": "CA"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Support",
+        "email": "support@studiomemoryapp.com",
+        "availableLanguage": "English"
+      }
+    }
+    </script>
 
+    <link rel="stylesheet" href="shared.css">
+    <style>
         body {
             margin: 0;
             padding: 0;
@@ -110,83 +155,7 @@
             will-change: transform, opacity;
         }
 
-        /* Navigation */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 10%;
-            height: 48px;
-            background: rgba(255, 255, 255, 0.8);
-
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 19px;
-            transition: opacity 0.2s ease;
-        }
-        .logo-container:hover { opacity: 0.7; }
-
-        .logo-img {
-            width: 32px;
-            height: 32px;
-            border-radius: 7px; 
-            object-fit: cover;
-        }
-
-        /* Desktop Navigation Links */
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-main);
-            font-size: 14px;
-            font-weight: 500;
-            opacity: 0.6;
-            transition: opacity 0.2s ease;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.current {
-            opacity: 1;
-        }
-
-        /* Hamburger Menu Toggle Button */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 22px;
-            height: 16px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            z-index: 1001;
-        }
-
-        .hamburger-bar {
-            width: 100%;
-            height: 2px;
-            background-color: var(--text-main);
-            transition: transform 0.25s ease, opacity 0.25s ease;
-            transform-origin: left center;
-        }
+        /* Nav, hamburger menu, and mobile overlay are in shared.css */
 
         /* Hero Section - Optimized 35/65 Split */
         .hero {
@@ -249,14 +218,7 @@
             margin: 10px 0;    
         }
 
-        .hero-content .hero-pricing-note {
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-top: 8px;
-            margin-bottom: 0;
-            font-weight: 500;
-        }
-
+        
         /* --- SECTION HEADLINE --- */
         .section-header {
             text-align: center;
@@ -354,18 +316,38 @@
             scroll-snap-align: center;
         }
 
-        /* Updated to allow clicking */
+        .gallery-trigger {
+            appearance: none;
+            -webkit-appearance: none;
+            border: 0;
+            padding: 0;
+            margin: 0 auto;
+            background: transparent;
+            display: block;
+            cursor: pointer;
+        }
+
+        .gallery-trigger:focus-visible {
+            outline: 2px solid var(--apple-blue, #0071e3);
+            outline-offset: 4px;
+            border-radius: 8px;
+        }
+
+        .gallery-trigger.suppress-focus-ring:focus-visible {
+            outline: none;
+        }
+
         .feature-ui-preview {
             width: 300px;
             height: 200px;
             margin: 0 auto;
             object-fit: contain;
-            cursor: pointer;
             display: block;
             transition: transform 0.2s ease;
         }
 
-        .feature-ui-preview:hover {
+        .gallery-trigger:hover .feature-ui-preview,
+        .gallery-trigger:focus-visible .feature-ui-preview {
             transform: scale(1.02);
         }
 
@@ -416,6 +398,18 @@
         }
 
         /* --- CAROUSEL DOTS --- */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
         .carousel-dots {
             display: flex;
             justify-content: center;
@@ -425,6 +419,10 @@
         }
 
         .carousel-dot {
+            appearance: none;
+            -webkit-appearance: none;
+            border: 0;
+            padding: 0;
             width: 8px;
             height: 8px;
             border-radius: 50%;
@@ -500,7 +498,6 @@
             margin-bottom: 8px; 
             text-wrap: balance;
         }
-        .pricing-tag { color: var(--text-secondary); font-size: 15px; margin-bottom: 24px; }
 
         .footer-cta .cta-buttons {
             justify-content: center;
@@ -515,18 +512,8 @@
             border-top: 1px solid #f0f0f0;
             padding-top: 20px;
         }
-        .footer-nav a {
-            text-decoration: none;
-            color: var(--text-main);
-            font-size: 12px;
-            font-weight: 400;
-            opacity: 0.6;
-            transition: opacity 0.2s ease;
-        }
-        .footer-nav a:hover,
-        .footer-nav a.current {
-            opacity: 1;
-        }
+
+        /* .footer-nav a link styling is in shared.css */
 
 
 /* --- HORIZONTAL SPREAD FAQ STYLES --- */
@@ -595,52 +582,7 @@
                 grid-template-columns: 1fr;
             }
 
-            .menu-toggle {
-                display: flex;
-            }
-
-            .nav-links {
-                display: flex;
-                flex-direction: column;
-                gap: 0;
-                position: fixed;
-                top: 48px;
-                left: 0;
-                width: 100%;
-                height: 0;
-                background-color: #ffffff;
-                opacity: 0;
-                visibility: hidden;
-                overflow: hidden;
-                transition: height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
-            }
-
-            .nav-links a {
-                width: 100%;
-                padding: 20px 10%;
-                font-size: 18px;
-                font-weight: 500;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-                box-sizing: border-box;
-            }
-
-            .nav-links.active {
-                height: calc(100vh - 48px);
-                opacity: 1;
-                visibility: visible;
-            }
-
-            /* Morph bars into an 'X' symbol */
-            .menu-toggle.open .hamburger-bar:nth-child(1) {
-                transform: rotate(45deg) translate(1px, -1px);
-            }
-            .menu-toggle.open .hamburger-bar:nth-child(2) {
-                opacity: 0;
-                transform: scaleX(0);
-            }
-            .menu-toggle.open .hamburger-bar:nth-child(3) {
-                transform: rotate(-45deg) translate(1px, 1px);
-            }
+            /* Nav overlay rules are in shared.css */
 
             .footer-nav {
                 flex-direction: column;
@@ -674,6 +616,9 @@
 
         /* Multiplatform Responsive Tweaks */
         @media (max-width: 1024px) {
+            .carousel-arrow.prev { left: 8px; }
+            .carousel-arrow.next { right: 8px; }
+
             .hero {
                 flex-direction: column;
                 padding: calc(60px + env(safe-area-inset-top)) 8% 40px;
@@ -709,22 +654,10 @@
         }
 
         /* --- NATIVE DARK MODE SUPPORT --- */
+        /* Color variables and nav dark styling are in shared.css */
         @media (prefers-color-scheme: dark) {
-            :root {
-                --apple-blue: #2997ff;
-                --text-main: #f5f5f7;
-                --text-secondary: #a1a1a6;
-                --bg-light: #1c1c1e;
-                --border-color: #38383a;
-            }
-
             body {
                 background-color: #000000;
-            }
-
-            nav {
-                background: rgba(0, 0, 0, 0.8);
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
 
             .carousel-outer-wrapper::before,
@@ -763,15 +696,35 @@
             }
         }
 
-        @media (prefers-color-scheme: dark) and (max-width: 768px) {
-            .nav-links {
-                background-color: #000000;
+
+	/* --- REDUCED MOTION SUPPORT --- */
+        @media (prefers-reduced-motion: reduce) {
+            .hero-content,
+            .hero-image {
+                animation: none;
+                opacity: 1;
+                transform: none;
             }
-            .nav-links a {
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+            .carousel-window {
+                scroll-behavior: auto;
+            }
+
+            .carousel-dot,
+            .gallery-trigger .feature-ui-preview,
+            .carousel-arrow,
+            .video-card {
+                transition: none;
+            }
+
+            dialog.lightbox[open] {
+                animation: none;
+            }
+
+            dialog.lightbox[open]::backdrop {
+                animation: none;
             }
         }
-
 
 	/* --- PAPER TEXTURE EFFECT (REFINED/LIGHTER) --- */
         .paper-texture-wrapper {
@@ -807,7 +760,7 @@
             StudioMemory
         </a>
         
-        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
             <span class="hamburger-bar"></span>
             <span class="hamburger-bar"></span>
             <span class="hamburger-bar"></span>
@@ -817,7 +770,6 @@
             <a href="about.html">About</a>
             <a href="manual.html">User Guide</a>
             <a href="faq.html">FAQ</a>
-            <a href="pricing.html">Pricing</a>
             <a href="watch.html">Watch</a>
         </div>
     </nav>
@@ -838,7 +790,6 @@
                         <img src="mac-app-store-badge.svg" alt="Download on the Mac App Store" class="store-badge">
                     </a>
                 </div>
-                <p class="hero-pricing-note">Currently in private beta &bull; Public release coming soon</p>
             </div>
             <div class="hero-image">
                 <img src="hero.webp" width="2400" height="1600" fetchpriority="high" loading="eager" alt="Mockup of StudioMemory showing iPhone, iPad, and Mac screens">
@@ -854,34 +805,46 @@
             <div class="carousel-window">
                 <div class="carousel-track" id="carouselTrack">                    
                     <div class="carousel-item">
-                        <img src="gallery.webp" width="2400" height="1600" loading="lazy" class="feature-ui-preview" alt="Photo Gallery Interface">
+                        <button type="button" class="gallery-trigger" aria-label="View larger image: Photo Gallery Interface">
+                            <img src="gallery.webp" width="2400" height="1600" loading="lazy" class="feature-ui-preview" alt="" data-full-alt="Photo Gallery Interface">
+                        </button>
                         <h3>Create a Visual Record</h3>
                         <p>Include up to six photos for each work — sketches, progress shots, and the finished work.</p>
                     </div>		                     
                     <div class="carousel-item">
-                        <div class="paper-texture-wrapper">
-                            <img src="PDFs.webp" width="2400" height="1600" loading="lazy" class="feature-ui-preview" alt="PDF Portfolio Generation">
-                        </div>
+                        <button type="button" class="gallery-trigger" aria-label="View larger image: PDF Portfolio Generation">
+                            <div class="paper-texture-wrapper">
+                                <img src="PDFs.webp" width="2400" height="1600" loading="lazy" class="feature-ui-preview" alt="" data-full-alt="PDF Portfolio Generation">
+                            </div>
+                        </button>
                         <h3>Create Professional Portfolios & Labels</h3>
                         <p>Instantly generate PDF portfolios to print and share, and print QR code labels for your works.</p>
                     </div>
 		    <div class="carousel-item">
-                        <img src="search.webp" width="2400" height="1600" loading="lazy" class="feature-ui-preview" alt="Smart Search Filters">
+                        <button type="button" class="gallery-trigger" aria-label="View larger image: Smart Search Filters">
+                            <img src="search.webp" width="2400" height="1600" loading="lazy" class="feature-ui-preview" alt="" data-full-alt="Smart Search Filters">
+                        </button>
                         <h3>Find Any Work Instantly</h3>
                         <p>Powerful search tools let you easily find any work — even years later.</p>
                     </div>                      
                     <div class="carousel-item">
-                        <img src="status.webp" width="2400" height="1600" loading="lazy" class="feature-ui-preview" alt="Collection Status Management">
+                        <button type="button" class="gallery-trigger" aria-label="View larger image: Collection Status Management">
+                            <img src="status.webp" width="2400" height="1600" loading="lazy" class="feature-ui-preview" alt="" data-full-alt="Collection Status Management">
+                        </button>
                         <h3>Manage Your Inventory</h3>
                         <p>See what’s Available, Sold, or Not for Sale at a glance. Your collection stays organized as it grows.</p>
                    </div>
 		   <div class="carousel-item">
-                        <img src="quickdetails.webp" width="2400" height="1600" loading="lazy" class="feature-ui-preview" alt="QuickDetails Features">
+                        <button type="button" class="gallery-trigger" aria-label="View larger image: QuickDetails Features">
+                            <img src="quickdetails.webp" width="2400" height="1600" loading="lazy" class="feature-ui-preview" alt="" data-full-alt="QuickDetails Features">
+                        </button>
                         <h3>Capture Details Quickly</h3>
                         <p>Capture essential details for every work in seconds using dynamic QuickDetails™ prompts.</p>
                     </div>
 		    <div class="carousel-item">
-                        <img src="safedata.webp" width="2400" height="1600" loading="lazy" class="feature-ui-preview" alt="iCloud Sync Protection">
+                        <button type="button" class="gallery-trigger" aria-label="View larger image: iCloud Sync Protection">
+                            <img src="safedata.webp" width="2400" height="1600" loading="lazy" class="feature-ui-preview" alt="" data-full-alt="iCloud Sync Protection">
+                        </button>
                         <h3>Carry Your Entire Collection</h3>
                         <p>Your archive syncs across iPhone, iPad, and Mac using iCloud. No manual backups. No duplicate libraries.</p>
                     </div>
@@ -896,6 +859,7 @@
             </button>
 
             <div class="carousel-dots" id="carouselDots"></div>
+            <div class="sr-only" id="carouselStatus" aria-live="polite"></div>
         </div>
 
         <div class="section-header">
@@ -951,7 +915,6 @@
         <footer>
             <div class="footer-cta">
                 <h2>Stop managing scattered files. Start building your archive today.</h2>
-                <p class="pricing-tag">Currently in private beta &bull; Public release coming soon</p>
                 <div class="cta-buttons">
                     <a href="#" aria-label="Download on the App Store">
                         <img src="app-store-badge.svg" alt="Download on the App Store" class="store-badge">
@@ -963,7 +926,7 @@
             </div>
            <div class="footer-nav">
                 <a href="privacy.html">Privacy Policy</a>
-                <a href="mailto:support@studiomemoryapp.com?subject=StudioMemory%20Pro%20Support%20Request">Contact Support</a>
+                <a href="mailto:support@studiomemoryapp.com?subject=StudioMemory%20Support%20Request">Contact Support</a>
             </div>
         </footer>
     </main>

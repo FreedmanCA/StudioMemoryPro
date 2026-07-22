@@ -2,31 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Privacy Policy - StudioMemory</title>
+  <title>StudioMemory | Privacy Policy</title>
+  <link rel="canonical" href="https://studiomemoryapp.com/privacy.html">
   <meta name="description" content="StudioMemory Privacy Policy. We prioritize your data security with local storage and private iCloud sync. No personal information is collected through the app.">
-  <meta name="keywords" content="StudioMemory privacy, app data security, artist archive privacy, local storage app, iCloud privacy policy, Nekudot Design Limited developer">
-  
-  <meta property="og:title" content="Privacy Policy - StudioMemory">
+   
+  <meta property="og:title" content="StudioMemory | Privacy Policy">
   <meta property="og:description" content="Read about our commitment to your privacy and how StudioMemory handles your data with local storage and private iCloud sync.">
-  <meta property="og:image" content="logo.png">
+  <meta property="og:image" content="https://studiomemoryapp.com/OGImage.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:type" content="article">
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="favicon-96x96.png" type="image/png" sizes="96x96">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:site_name" content="StudioMemory">
+  <meta property="og:url" content="https://studiomemoryapp.com/privacy.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="StudioMemory | Privacy Policy">
+  <meta name="twitter:description" content="Read about our commitment to your privacy and how StudioMemory handles your data with local storage and private iCloud sync.">
+  <meta name="twitter:image" content="https://studiomemoryapp.com/OGImage.webp">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="shared.css">
   <style>
-    :root {
-        --apple-blue: #0071e3;
-        --text-main: #1d1d1f;
-        --text-secondary: #86868b;
-        --bg-light: #f5f5f7;
-        --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-
     body {
       font-family: var(--font-family);
       color: var(--text-main);
@@ -37,85 +38,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 10%;
-        height: 48px;
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        border-bottom: 1px solid rgba(0,0,0,0.1);
-    }
-
-    .logo-container {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        text-decoration: none;
-        color: var(--text-main);
-        font-weight: 600;
-        font-size: 19px;
-        transition: opacity 0.2s ease;
-    }
-
-    .logo-container:hover {
-        opacity: 0.7;
-    }
-
-    .logo-img {
-        width: 32px;
-        height: 32px;
-        border-radius: 7px; 
-        object-fit: cover;
-    }
-
-    /* Desktop Navigation Links */
-    .nav-links {
-        display: flex;
-        gap: 20px;
-    }
-
-    .nav-links a {
-        text-decoration: none;
-        color: var(--text-main);
-        font-size: 14px;
-        font-weight: 500;
-        opacity: 0.6; /* Mutes inactive links */
-        transition: opacity 0.2s ease;
-    }
-
-    /* Light up links on hover or if it is the current page */
-    .nav-links a:hover,
-    .nav-links a.current {
-        opacity: 1;
-    }
-
-    /* Hamburger Menu Toggle Button */
-    .menu-toggle {
-        display: none;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 22px;
-        height: 16px;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        z-index: 1001;
-    }
-
-    .hamburger-bar {
-        width: 100%;
-        height: 2px;
-        background-color: var(--text-main);
-        transition: transform 0.25s ease, opacity 0.25s ease;
-        transform-origin: left center;
-    }
+    /* Nav, hamburger menu, and mobile overlay are in shared.css */
 
     .container {
       max-width: 800px;
@@ -143,104 +66,24 @@
         gap: 30px;
     }
 
-    .footer-nav a {
-        text-decoration: none;
-        color: var(--text-main);
-        font-size: 12px;
-        font-weight: 400;
-        opacity: 0.6; /* Mutes footer links by default */
-        transition: opacity 0.2s ease;
-    }
+    /* .footer-nav a link styling is in shared.css */
 
-    .footer-nav a:hover,
-    .footer-nav a.current {
-        opacity: 1; /* Lights up on hover or if it is the current page */
-    }
-
-/* Mobile Responsive Navigation Overlay */
+    /* Mobile: page-specific footer-nav layout only (nav overlay is in shared.css) */
     @media (max-width: 768px) {
-        .menu-toggle {
-            display: flex;
-        }
-
-        .nav-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            position: fixed;
-            top: 48px;
-            left: 0;
-            width: 100%;
-            height: 0;
-            background-color: #ffffff;
-            opacity: 0;
-            visibility: hidden;
-            overflow: hidden;
-            transition: height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        .nav-links a {
-            width: 100%;
-            padding: 20px 10%;
-            font-size: 18px;
-            font-weight: 500;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            box-sizing: border-box;
-        }
-
-        .nav-links.active {
-            height: calc(100vh - 48px);
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Morph bars into an 'X' symbol */
-        .menu-toggle.open .hamburger-bar:nth-child(1) {
-            transform: rotate(45deg) translate(1px, -1px);
-        }
-        .menu-toggle.open .hamburger-bar:nth-child(2) {
-            opacity: 0;
-            transform: scaleX(0);
-        }
-        .menu-toggle.open .hamburger-bar:nth-child(3) {
-            transform: rotate(-45deg) translate(1px, 1px);
-        }
-
         .footer-nav {
             flex-direction: column;
             gap: 15px;
         }
     }
 
-/* --- NATIVE DARK MODE SUPPORT --- */
+    /* Color variables and nav dark styling are in shared.css */
     @media (prefers-color-scheme: dark) {
-        :root {
-            --apple-blue: #2997ff;
-            --text-main: #f5f5f7;
-            --text-secondary: #86868b;
-            --bg-light: #1c1c1e;
-        }
-
         body {
             background-color: #000000;
         }
 
-        nav {
-            background: rgba(0, 0, 0, 0.8);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
         footer {
             border-top: 1px solid #38383a;
-        }
-    }
-
-    @media (prefers-color-scheme: dark) and (max-width: 768px) {
-        .nav-links {
-            background-color: #000000;
-        }
-        .nav-links a {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
     }
 
@@ -254,7 +97,7 @@
           StudioMemory
       </a>
       
-      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
           <span class="hamburger-bar"></span>
           <span class="hamburger-bar"></span>
           <span class="hamburger-bar"></span>
@@ -264,12 +107,12 @@
           <a href="about.html">About</a>
           <a href="manual.html">User Guide</a>
           <a href="faq.html">FAQ</a>
-          <a href="pricing.html">Pricing</a>
           <a href="watch.html">Watch</a>
       </div>
   </nav>
 
   <div class="container">    
+    <main>
     <h1>StudioMemory Privacy Policy</h1>
     
     <div class="meta">
@@ -279,7 +122,7 @@
     </div>
 
     <h2>Summary</h2>
-    <p>We designed StudioMemory to work without collecting personal information. This privacy policy explains how and why we collect, use, disclose, and retain personal information in connection with StudioMemory installed on iOS and macOS devices.</p>
+    <p>We designed StudioMemory to work without collecting personal information. This privacy policy explains how and why we collect, use, disclose, and retain personal information in connection with StudioMemory installed on iOS and macOS devices and through our website at StudioMemoryApp.com.</p>
 
     <h2>No Data Collection Through App</h2>
     <p>StudioMemory does not collect users’ personal information in the normal course of use. You are not required to have an account with us. StudioMemory does not run advertising or analytics.</p>
@@ -294,6 +137,10 @@
     <p>If you voluntarily contact us by email for technical support regarding your use of StudioMemory, you may voluntarily provide us with your relevant personal information — such as your email address, your name (if you include it), the content of your message, and the diagnostic information you choose to share (e.g., screenshots and diagnostic reports). You may not provide us with any sensitive or confidential information in connection with any support communications. By providing us with information in connection with a technical support request, you acknowledge that we may use the information to respond to you, diagnose and troubleshoot issues, communicate about fixes or workarounds, improve StudioMemory and our technical support generally, and maintain reasonable records of support interactions. We do not use technical support information for advertising or marketing purposes unless you explicitly ask to be contacted for that purpose.</p>
 
 
+<h2>Our Website - StudioMemoryApp.com</h2>
+    <p>We do not run advertising or analytics on our website, and we do not set cookies. Our website is hosted by Netlify, which processes limited technical information necessary to deliver the site to you, such as your IP address, browser type, and the time of your request. Our Watch page embeds videos hosted by YouTube, a Google service. We use YouTube's privacy-enhanced mode, which limits the information YouTube collects unless you play a video. Videos load only after you choose to play one. When you do, YouTube may set cookies and collect information about your viewing in accordance with Google's privacy policy, which we do not control. If you do not play a video, no YouTube content is loaded.</p>
+
+
 <h2>Legal Basis for Processing</h2>
 <p>If you are located in a jurisdiction that requires a legal basis for processing personal information (including the European Economic Area and the United Kingdom), we rely on the following legal bases:</p>
 <ul>
@@ -306,8 +153,8 @@
     <p>We do not sell personal information. We do not share personal information with third parties except if required by law, or to protect our rights and users (e.g., fraud/security), or if you explicitly request or consent to sharing.</p>
 
     <h2>Data Retention and Processing Location</h2>
-    <p>We keep records of support communications only as long as reasonably necessary to address the support request and for reasonable record-keeping and legal compliance purposes, then we delete the records or anonymize them where feasible.
-	<p>We are located in Vancouver, British Columbia, Canada, and we process and store personal information in Canada and the United States of America. If you are located outside Canada, including in the United States of America, European Economic Area or the United Kingdom, any personal information you provide to us through support communications or beta testing may be transferred to and processed in Canada and the United States of America. By voluntarily providing personal information to us, you acknowledge that the information may be processed in Canada and the United States of America, which may have data protection laws that differ from those in your jurisdiction.</p>
+    <p>We keep records of support communications only as long as reasonably necessary to address the support request and for reasonable record-keeping and legal compliance purposes, then we delete the records or anonymize them where feasible.</p>
+    <p>We are located in Vancouver, British Columbia, Canada, and we process and store personal information in Canada and the United States of America. If you are located outside Canada, including in the United States of America, European Economic Area or the United Kingdom, any personal information you provide to us through support communications or beta testing may be transferred to and processed in Canada and the United States of America. By voluntarily providing personal information to us, you acknowledge that the information may be processed in Canada and the United States of America, which may have data protection laws that differ from those in your jurisdiction.</p>
 
     <h2>Your Choices and Rights</h2>
 <p>You can use StudioMemory without providing personal information to us. If you provide personal information to us, you may have certain rights under applicable privacy laws, including the right to:</p>
@@ -330,19 +177,20 @@
     <p>We take reasonable steps to protect any personal information you send us. No method of information transmission or storage is 100% secure.</p>
 
     <h2>Children’s Privacy</h2>
-    <p>StudioMemory is not directed to children under 13 years of age, and we do not knowingly collect personal information from children. If you believe a child under 13 has provided us with personal information, please contact us at support@studiomemoryapp.com.</p>
+    <p>StudioMemory is not directed to children under 13 years of age, and we do not knowingly collect personal information from children. If you believe a child under 13 has provided us with personal information, please contact us at privacy@studiomemoryapp.com.</p>
 
     <h2>Changes to this Policy</h2>
     <p>We may change this Privacy Policy from time to time. Our collection, use, disclosure, and retention of personal information will be governed by the version of this Policy in effect at that time. It is your responsibility to ensure that you read, understand, and accept the latest version of this Policy. If we make changes to this Policy, we will update the “Last Updated” above and post the changed policy at https://studiomemoryapp.com/privacy.html.</p>
 
    <h2>Contact</h2>
     <p>If you have questions about our privacy practices in connection with StudioMemory, contact our Privacy Officer at privacy@studiomemoryapp.com.</p>
+    </main>
   </div>
 
   <footer>
       <div class="footer-nav">
           <a href="privacy.html" class="current">Privacy Policy</a>
-          <a href="mailto:support@studiomemoryapp.com?subject=StudioMemory%20Pro%20Support%20Request">Contact Support</a>
+          <a href="mailto:support@studiomemoryapp.com?subject=StudioMemory%20Support%20Request">Contact Support</a>
       </div>
   </footer>
 
